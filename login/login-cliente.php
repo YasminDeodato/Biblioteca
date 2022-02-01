@@ -1,15 +1,7 @@
-<?php session_start(); ?>
 <div class="card w-100">
     <div class="card-body">
         <h5 class="card-title mb-4">Login</h5>
-        <?php if($_SESSION["mensagem"]) { ?>
-            <div class="alert alert-<?php echo $_SESSION["tipo-mensagem"]; ?> alert-dismissible fade show" role="alert">
-                <strong>Notificacao: </strong><?php echo $_SESSION["mensagem"]; ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php }
-            session_unset();
-        ?>
+        <?php include '../notificacao.php'; ?>
         <form class="row g-3" action="../backend/cliente/login.php" method="POST">
             <div class="col-12">
                 <label for="inputEmail" class="form-label">E-mail</label>
