@@ -11,7 +11,9 @@
       $_GET['tabela'] = 'Livro';
       $_GET['acao'] = 'cadastroLivro';
       require("../../modules/books/listagem.php");
-      $livro = array("titulo"=>"", "ano"=>"2022", "faixa_etaria"=>"-1", "idioma"=>"", "n_paginas"=>"0");
+      $autoresSel = array(array('nome' => '', 'id_autor' => ''));
+      $livro = array("titulo"=>"", "ano"=>"2022", "faixa_etaria"=>"-1", "idioma"=>"", "n_paginas"=>"0",
+      "autoresSel" => $autoresSel);
       $id='';
       $forms = 'cadastrar.php';
       $botao = 'Cadastrar';
