@@ -16,7 +16,7 @@
     }
 ?>
 <div class="container-fluid">
-  <form class="row g-3" action="../../../modules/books/<?php echo $forms; ?>" method="POST">
+  <form class="row g-3" action="../../modules/books/<?php echo $forms; ?>" method="POST">
     <div class="col-auto col-md-8">
       <label for="inputNome" class="form-label">Nome</label>
       <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $editora["nome"]; ?>" required>

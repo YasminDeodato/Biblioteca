@@ -16,7 +16,7 @@
     }
 ?>
 <div class="container-fluid">
-  <form class="row g-md-0 g-sm-0 g-xs-0" action="../../../modules/books/<?php echo $forms; ?>" method="POST">
+  <form class="row g-md-0 g-sm-0 g-xs-0" action="../../modules/books/<?php echo $forms; ?>" method="POST">
     <div class="row">
       <div class="col-md-8">
         <label for="inputNome" class="form-label">Nome</label>
