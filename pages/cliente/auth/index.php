@@ -17,16 +17,25 @@
   <?php 
     include("../login/autentica.php");
     include_once "../../common/menu-cliente.html"; 
-  ?>
+    ?>
 
-  <!-- Conteudo Principal -->
-  <main class="flex-shrink-0">
-    <div class="container mt-5">
-
+<!-- Conteudo Principal -->
+<main class="flex-shrink-0">
+  <div class="container mt-5">
+      <?php
+          include_once "../../common/notificacao.php"; 
+          if(count($_GET)>0) {
+              $url = $_GET['acao'] . ".php";
+              include_once($url);
+          } else {
+      ?>
         <h1 class="mt-5">Bem vinde ao sistema, <?php  echo $_SESSION["nome"]; ?></h1>
         <p class="lead">Aqui voce encontra os livros mais falados do momento!</p>
+      <?php
+          }
+      ?>
 
-        <?php 
+        <?php
           //for($i=0; $i<8; $i++)
           //include("../../common/reserva.php"); 
           //include("../../common/reserva.php"); 
