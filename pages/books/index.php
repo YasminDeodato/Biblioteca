@@ -22,8 +22,7 @@
       <?php
         if(count($_GET)>0) {
           $url = "../../pages/books/list/". $_GET['acao'] . ".php";
-          //echo $url;
-          include_once($url);
+          include($url);
         } else {
       ?>
         <h1 class="mt-5">Biblioteca</h1>
