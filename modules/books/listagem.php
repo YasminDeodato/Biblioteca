@@ -1,9 +1,9 @@
 <?php 
-  //conecta BD
-  require('../../modules/conectaBD.php');
+//conecta BD
+require('../../modules/conectaBD.php');
 
-  //Obter dados
-  if(count($_GET)>0) {
+//Obter dados
+if(count($_GET)>0) {
     $tabela = $_GET['tabela'];
     $acao = $_GET['acao'];
   
@@ -145,9 +145,47 @@
           $i++;
         }
       }
-    }    
-  }
 
+      if($acao == 'nomeLivro') {
+        $results = $mysqli_connection->query("SELECT id_livro, titulo FROM Livro ORDER BY titulo ASC");   
+      
+        $livros = array();
+        $i=0;
+        while($row = $results->fetch_assoc()) {
+          $livros[$i] = array(
+            'id_livro' => $row['id_livro'],
+            'titulo' => $row['titulo']
+          );
+          $i++;
+        }
+      }
+    }   
+    
+  }
+  
+  if(count($_POST)>0) {
+    $tabela = $_POST['tabela'];
+    $acao = $_POST['acao'];
+    
+    if($tabela == "Exemplar") {
+      if($acao == "listaExemplar") {
+        $id_livro = $_POST['id_livro'];
+
+        $sql = "SELECT * FROM Exemplar WHERE id_livro = " . $id_livro . " ORDER BY id_exemplar";
+        $results = $mysqli_connection->query($sql);   
+      
+        $exemplares = array();
+        $i=0;
+        while($row = $results->fetch_assoc()) {
+          $exemplares[$i] = array(
+            'id_exemplar' => $row['id_exemplar'],
+            'status_e' => $row['status_e'],
+            'id_livro' => $row['id_livro']);
+          $i++;
+        }
+      }
+    }
+  }
   //fechar conexão com banco de dados
   $mysqli_connection->close();
 ?>

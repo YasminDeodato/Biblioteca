@@ -24,6 +24,7 @@
       <th scope="col">Paginas</th>
       <th scope="col">Editar</th>
       <th scope="col">Excluir</th>
+      <th scope="col">Exemplares</th>
     </tr>
   </thead>
   <tbody>
@@ -50,7 +51,16 @@
           echo '<td><a data-bs-toggle="modal" data-bs-target="#excluirModal' . $livros[$key]["id_livro"] .'" class="text-danger" data-id="' . $livros[$key]["id_livro"] . 'data-toggle="modal">         
           <span class="material-icons" data-toggle="tooltip" title="Excluir">delete</span>
           </a></td>';
-          echo "</tr>"; ?>
+
+          echo '<td>
+          <form action="../../pages/books/index.php?acao=listaExemplar" method="POST">
+            <input type="hidden" id="id" name="id" value="' . $livros[$key]['id_livro'] .'">
+            <input type="hidden" id="acao" name="acao" value="listaExemplar">
+            <button type="submit" class="btn text-success text-center" target="_blank"><span class="material-icons" data-toggle="tooltip" title="Exemplares">book</span></button></td>
+          </form>';
+
+
+          echo "</tr>"; ?> 
         
           <!-- Modal Editar -->
           <div class="modal fade" id="editarModal<?php echo $livros[$key]['id_livro'];?>" tabindex="-1" aria-hidden="true">
