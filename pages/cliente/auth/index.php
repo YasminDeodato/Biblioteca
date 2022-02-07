@@ -23,9 +23,11 @@
 <main class="flex-shrink-0">
   <div class="container mt-5">
       <?php
-          include_once "../../common/notificacao.php"; 
           if(count($_GET)>0) {
-              $url = $_GET['acao'] . ".php";
+            if(!empty($_GET['sub'])) $url = 'reserva/';
+            else include_once "../../common/notificacao.php"; 
+            
+              $url .= $_GET['acao'] . ".php";
               include_once($url);
           } else {
       ?>
