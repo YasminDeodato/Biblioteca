@@ -7,6 +7,7 @@
     require("../../../modules/cliente/atualizar.php");
     //echo 'Senha ' . $clienteSenha; 
 ?>
+<h3 class="bg-warning p-2 border-2 rounded">Pagina em Construcao</h3>
 <div class="card w-100">
     <div class="card-body">
         <h5 class="card-title mb-4">Atualizar senha</h5>
