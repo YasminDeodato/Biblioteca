@@ -85,6 +85,27 @@
     $novaUrl = '../../pages/books/index.php?acao=listaLivro';
   } 
 
+  if($tabela == "Exemplar") {
+    $id = $_POST['id_exemplar'];
+    $id_livro = $_POST['id_livro'];
+        
+    //apagar livro
+    $stmt = $mysqli_connection->prepare("DELETE FROM Exemplar WHERE id_exemplar = ?");
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    
+    if($stmt->execute()) {
+      $_SESSION['mensagem'] = 'Exclusao realizada com sucesso';
+      $_SESSION['tipo-mensagem'] = 'success';
+    } else {
+      $_SESSION['mensagem'] = 'Erro ao realizar exclusao!';
+      $_SESSION['tipo-mensagem'] = 'danger';
+    }
+
+    $_SESSION['id_livro'] = $id_livro;
+    $novaUrl = '../../pages/books/index.php?acao=listaExemplar';
+  } 
+
   //fechar conexão com banco de dados
   $mysqli_connection->close();
   redirect($novaUrl);

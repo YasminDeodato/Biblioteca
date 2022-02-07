@@ -77,6 +77,27 @@
       $novaUrl = '../../pages/books/index.php?acao=listaLivro';
     }
 
+    if($tabela == "Exemplar") {
+      $id_exemplar = $_POST['id_exemplar'];
+      $status_e = $_POST['status_e'];
+      $id_livro = $_POST['id_livro'];
+
+      $stmt = $mysqli_connection->prepare("UPDATE Exemplar SET status_e = ? WHERE id_exemplar = ?");
+      $stmt->bind_param('si', $status_e, $id_exemplar);
+      $stmt->execute();
+      
+      if ($stmt->execute()) {
+        $_SESSION['mensagem'] =  'Dados do exemplar ' .$id_exemplar . ' alterados com sucesso!';
+        $_SESSION['tipo-mensagem'] = 'success';
+      } else {
+        $_SESSION['mensagem'] = 'Erro ao alterar dados do exemplar!';
+        $_SESSION['tipo-mensagem'] = 'danger';
+      }
+      
+      $_SESSION['id_livro'] = $id_livro;
+      $novaUrl = '../../pages/books/index.php?acao=listaExemplar';
+    }
+
   }
 
   //fechar conexão com banco de dados

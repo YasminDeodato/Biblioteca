@@ -173,7 +173,7 @@ if(count($_GET)>0) {
 
         $sql = "SELECT * FROM Exemplar WHERE id_livro = " . $id_livro . " ORDER BY id_exemplar";
         $results = $mysqli_connection->query($sql);   
-      
+        
         $exemplares = array();
         $i=0;
         while($row = $results->fetch_assoc()) {
@@ -181,7 +181,26 @@ if(count($_GET)>0) {
             'id_exemplar' => $row['id_exemplar'],
             'status_e' => $row['status_e'],
             'id_livro' => $row['id_livro']);
-          $i++;
+            $i++;
+        }
+      }
+
+      if($acao == "proximoCodigo") {
+        $sql = "SHOW TABLE STATUS LIKE 'Exemplar';";
+        $results = $mysqli_connection->query($sql);
+        $row = $results->fetch_assoc();
+        $codigoProx = $row['Auto_increment'];
+      }
+
+      if($acao == "infoExemplar") {
+        $id_exemplar = $_POST['id_exemplar'];
+        $sql = "SELECT * FROM Exemplar WHERE id_exemplar = " . $id_exemplar . ";";
+        $results = $mysqli_connection->query($sql);
+        while($row = $results->fetch_assoc()) {
+          $exemplar = array(
+            'id_exemplar' => $row['id_exemplar'],
+            'status_e' => $row['status_e'],
+            'id_livro' => $row['id_livro']);
         }
       }
     }

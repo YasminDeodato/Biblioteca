@@ -76,6 +76,27 @@
       
       $novaUrl = '../../pages/books/index.php?acao=listaLivro';
     }
+
+    if($tabela == 'Exemplar') {
+      $id_exemplar = $_POST['id_exemplar'];
+      $status_e = $_POST['status_e'];
+      $id_livro = $_POST['id_livro'];
+
+      $stmt = $mysqli_connection->prepare("INSERT INTO Exemplar(status_e, id_livro) VALUES (?, ?)");
+      $stmt->bind_param('si', $status_e, $id_livro);
+  
+      if($stmt->execute()) {
+        $id_inserido = $stmt->insert_id;
+        $_SESSION['mensagem'] = 'Exemplar ' . $id_inserido . ' cadastrado com sucesso';
+        $_SESSION['tipo-mensagem'] = 'success';
+      } else {
+        $_SESSION['mensagem'] = 'Erro ao inserir exemplar!';
+        $_SESSION['tipo-mensagem'] = 'danger';
+      }
+      
+      $_SESSION['id_livro'] = $id_livro;
+      $novaUrl = '../../pages/books/index.php?acao=listaExemplar';
+    }
   }
   
   //fechar conexão com banco de dados
