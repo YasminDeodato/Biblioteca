@@ -20,7 +20,6 @@
         "status_e"=> "", 
         "id_livro" => $id);
     }
-    echo 'ID exemplar ' . $exemplar['id_exemplar'] . ' do livro de id ' . $exemplar['id_livro'];
 ?>
 <div class="container-fluid">
   <form class="row g-md-0 g-sm-0 g-xs-0" action="../../modules/books/<?php echo $forms; ?>" method="POST">

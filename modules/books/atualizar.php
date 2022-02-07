@@ -84,7 +84,6 @@
 
       $stmt = $mysqli_connection->prepare("UPDATE Exemplar SET status_e = ? WHERE id_exemplar = ?");
       $stmt->bind_param('si', $status_e, $id_exemplar);
-      $stmt->execute();
       
       if ($stmt->execute()) {
         $_SESSION['mensagem'] =  'Dados do exemplar ' .$id_exemplar . ' alterados com sucesso!';
