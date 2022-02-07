@@ -1,18 +1,33 @@
 <?php
     $id = $_POST['id'];
     $_POST['tabela'] = 'Exemplar';
-    require("../../modules/books/listagem.php");
-
-    if(empty($exemplar)) {
-        $exemplar = array("id_exemplar"=>$codigo, "status_e"=>"", "id_livro" => "");
+  
+    $_POST['acao'] = 'infoExemplar';
+    $forms = 'atualizar.php';
+    $botao = 'Salvar';
+    
+    if(empty($_POST['id_exemplar'])) {
+      $_POST['acao'] = 'proximoCodigo';
+      $forms = 'cadastrar.php';
+      $botao = 'Cadastrar';
     }
+    
+    require("../../modules/books/listagem.php");
+    
+    if(!empty($codigoProx) || empty($exemplar)) {
+      $exemplar = array(
+        "id_exemplar"=> $codigoProx, 
+        "status_e"=> "", 
+        "id_livro" => $id);
+    }
+    echo 'ID exemplar ' . $exemplar['id_exemplar'] . ' do livro de id ' . $exemplar['id_livro'];
 ?>
 <div class="container-fluid">
-  <form class="row g-md-0 g-sm-0 g-xs-0" action="#" method="POST">
+  <form class="row g-md-0 g-sm-0 g-xs-0" action="../../modules/books/<?php echo $forms; ?>" method="POST">
     <div class="row">
       <div class="col-md-4">
         <label for="inputCodigoExemplar" class="form-label">Codigo</label>
-        <input type="number" class="form-control" id="codigo" name="codigo" value="<?php echo $exemplar['codigo']; ?>" disabled>
+        <input type="number" class="form-control" id="id_e" name="id_e" value="<?php echo $exemplar['id_exemplar']; ?>" disabled>
       </div>
       <div class="col-md-8">
         <label for="inputStatusExemplar" class="form-label">Status</label>
@@ -27,8 +42,9 @@
     <div class="row">
       <div class="col-12">
         <input type="hidden" id="tabela" name="tabela" value="Exemplar">
-        <input type="hidden" id="id_autor" name="id_livro" value="<?php echo $exemplar['id_livro']; ?>">
-        <button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
+        <input type="hidden" id="id_livro" name="id_livro" value="<?php echo $exemplar['id_livro']; ?>">
+        <input type="hidden" id="id_exemplar" name="id_exemplar" value="<?php echo $exemplar['id_exemplar']; ?>">
+        <button type="submit" class="btn btn-primary mt-2"><?php echo $botao; ?></button>
       </div>
     </div>
   </form>
