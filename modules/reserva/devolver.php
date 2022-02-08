@@ -4,7 +4,6 @@
     //conecta BD
     require('../../modules/conectaBD.php');
 
-    echo 'OIOIOIO<3';
     $acao = $_POST['acao'];
 
     if($acao == 'devolverReserva') {
@@ -12,8 +11,6 @@
         $id_reserva = $_POST['id'];
         $statusNovo = 'Finalizada';
         
-        echo 'Alterar dados da reserva ' . $id_reserva . ' do livro ' . $reserva['titulo_livro'];
-
         $stmt = $mysqli_connection->prepare("UPDATE Reserva SET status_r = ? WHERE id_reserva = ?");
         $stmt->bind_param('si', $statusNovo, $id_reserva);
        
@@ -25,8 +22,6 @@
             $_SESSION['tipo-mensagem'] = 'danger';
         }
 
-        echo '<br/>' . $_SESSION['mensagem'];
-    
         $novaUrl = '../../pages/cliente/auth/index.php?acao=formsReserva&sub=reserva';
     }
 

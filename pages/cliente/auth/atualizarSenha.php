@@ -5,7 +5,6 @@
     $_GET['id'] = $_SESSION['id_cliente'];
     
     require("../../../modules/cliente/atualizar.php");
-    //echo 'Senha ' . $clienteSenha; 
 ?>
 <h3 class="bg-warning p-2 border-2 rounded">Pagina em Construcao</h3>
 <div class="card w-100">

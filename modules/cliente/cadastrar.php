@@ -23,9 +23,6 @@
       //senha criptografada
       $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
       
-      echo 'Nome: ' .$nome . ' | Data Nasc.: ' . $data_nasc;
-      echo 'Email: ' . $email . ' | Senha:' . $senha;
-      
       $stmt = $mysqli_connection->prepare("INSERT INTO Cliente(nome, data_nasc, email, senha) VALUES (?, ?, ?, ?)");
       $stmt->bind_param('ssss', $nome, date($data_nasc), $email, $senha);
       

@@ -36,13 +36,6 @@
       <?php
           }
       ?>
-
-        <?php
-          //for($i=0; $i<8; $i++)
-          //include("../../common/reserva.php"); 
-          //include("../../common/reserva.php"); 
-        ?>
-
     </div>
   </main>
 

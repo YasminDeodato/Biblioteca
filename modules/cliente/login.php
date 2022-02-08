@@ -32,14 +32,10 @@
     
         //senha correta
         if (password_verify($_POST['senha'], $cliente["senha"])) {
-            echo 'Senha correta!';
             $_SESSION["id_cliente"] = $cliente["id_cliente"];
             $_SESSION["nome"] = $cliente["nome"];
             $_SESSION["autenticado"] = true;
             
-            //echo $_SERVER['PHP_SELF'];
-            //echo '<br/><a href="../../pages/cliente/auth/index.php">Teste</a>';
-            //echo '<br/><a href="../../../pages/cliente/auth/index.php">Teste</a>';
             $novaUrl = '../../pages/cliente/auth/index.php';
         } else {
             $_SESSION['mensagem'] = 'Senha incorreta';
@@ -48,7 +44,7 @@
         }
     }
     
-    //fechar conexão com banco de dados
+    //fechar conexao com banco de dados
     $mysqli_connection->close();
 
     redirect($novaUrl);

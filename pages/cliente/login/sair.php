@@ -1,14 +1,11 @@
 <?php 
     session_start();
 
-    //print_r($_SESSION);
-
     //remover todas variaveis da sessao
     session_unset();
 
     //destruir a sessao
     session_destroy();
-
     
     //nova sessao
     session_start();
