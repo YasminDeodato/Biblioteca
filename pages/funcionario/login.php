@@ -14,10 +14,13 @@
   <title>Biblioteca</title>
 </head>
 <body>
+    <?php
+        session_unset();
+    ?>
    <div class="bg-image"  style="background-image: url('../../public/assets/imgs/bg.jpg'); height: 100vh;">
         <div class="mask h-100 w-100" style="background-color: rgba(0.5, 0.2, 0.5, 0.4);">
             <div class="col text-center pt-2">
-                <button type="submit" class="btn btn-primary mt-2 disabled">Área Restrita de Funcionários</button>
+                <button type="submit" class="btn btn-primary mt-2 disabled"><span class="material-icons align-middle fs-6">lock</span> &Aacute;rea Restrita de Funcion&aacute;rios</button>
             </div>
         <main class="flex-shrink-0">
             <div class="container pt-5">
@@ -25,7 +28,7 @@
                     <div class="col col-md-6 col-auto">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title mb-4">Acesso ao Sistema - Area de Funcionarios</h5>
+                                <h5 class="card-title mb-4">Acesso ao Sistema - &Aacute;rea de Funcion&aacute;rios</h5>
                                 <?php include '../common/notificacao.php'; ?>
                                 <form class="row g-3" action="../../modules/funcionario/login.php" method="POST">
                                     <div class="col-12">
