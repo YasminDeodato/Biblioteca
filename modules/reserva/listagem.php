@@ -2,7 +2,11 @@
     session_start();
 
     //conecta BD
-    require('../../../modules/conectaBD.php');
+    if($_GET['acao'] == 'listaReservaFunc') {
+        require('../../modules/conectaBD.php');
+    } else {
+        require('../../../modules/conectaBD.php');
+    }
 
     if(count($_GET)>0) {
         $tabela = $_GET['tabela'];
@@ -31,7 +35,7 @@
                 $sql = "SELECT * FROM Reserva
                 JOIN Exemplar ON Reserva.id_exemplar = Exemplar.id_exemplar
                 JOIN Livro ON Livro.id_livro = Exemplar.id_livro
-                WHERE Reserva.id_cliente = " . $id_cliente . " ORDER BY data_fim, status_r";
+                WHERE Reserva.id_cliente = " . $id_cliente . " ORDER BY data_fim DESC, status_r";
                 
                 $results = $mysqli_connection->query($sql);   
             
@@ -42,6 +46,37 @@
                         'id_reserva' => $row['id_reserva'],
                         'id_exemplar' => $row['id_exemplar'],
                         'id_cliente' => $row['id_cliente'],
+                        'id_func' => $row['id_func'],
+                        'data_inicio' => $row['data_inicio'],
+                        'data_fim' => $row['data_fim'],
+                        'status_r' => $row['status_r'],
+                        'multa' => $row['multa'],
+                        'titulo_livro' => $row['titulo']
+                    );
+                    $i++;
+                }
+            }
+
+            if($acao == 'listaReservaFunc') {
+                $id_func = $_SESSION['id_func'];
+
+                $sql = "SELECT * FROM Reserva
+                JOIN Exemplar ON Reserva.id_exemplar = Exemplar.id_exemplar
+                JOIN Livro ON Livro.id_livro = Exemplar.id_livro
+                JOIN Cliente ON Cliente.id_cliente = Reserva.id_cliente
+                WHERE isnull(Reserva.id_func) OR Reserva.id_func = " . $id_func .
+                " ORDER BY data_fim, status_r;";
+
+                $results = $mysqli_connection->query($sql);   
+                            
+                $reservas = array();
+                $i=0;
+                while($row = $results->fetch_assoc()) {
+                    $reservas[$i] = array(
+                        'id_reserva' => $row['id_reserva'],
+                        'id_exemplar' => $row['id_exemplar'],
+                        'id_cliente' => $row['id_cliente'],
+                        'nome_cliente' => $row['nome'],
                         'id_func' => $row['id_func'],
                         'data_inicio' => $row['data_inicio'],
                         'data_fim' => $row['data_fim'],

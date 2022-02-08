@@ -4,6 +4,7 @@
     //conecta BD
     require('../../modules/conectaBD.php');
 
+    echo 'OIOIOIO<3';
     $acao = $_POST['acao'];
 
     if($acao == 'devolverReserva') {
@@ -28,11 +29,49 @@
     
         $novaUrl = '../../pages/cliente/auth/index.php?acao=formsReserva&sub=reserva';
     }
+
+    if($acao == 'atualizarReserva') {
+        $id_reserva = $_POST['id'];
+        $statusNovo =  $_POST['status_r'];
+        $id_func = $_SESSION['id_func'];
+
+        $stmt = $mysqli_connection->prepare("UPDATE Reserva SET status_r = ?, id_func = ? WHERE id_reserva = ?");
+        $stmt->bind_param('sii', $statusNovo, $id_func, $id_reserva);
+       
+        if($stmt->execute()) {
+            $_SESSION['mensagem'] = 'Reserva ' . $id_reserva .' atualizada com sucesso!';
+            $_SESSION['tipo-mensagem'] = 'success';
+        } else {
+            $_SESSION['mensagem'] = 'Erro ao atualizar reserva ' . $id_reserva;
+            $_SESSION['tipo-mensagem'] = 'danger';
+        }
+    
+        $novaUrl = '../../pages/books/index.php?acao=listaReserva';
+    }
+
+    if($acao == 'adicionarMulta') {
+        $id_reserva = $_POST['id'];
+        $multa =  $_POST['multa'];
+        $id_func = $_SESSION['id_func'];
+
+        $stmt = $mysqli_connection->prepare("UPDATE Reserva SET multa = ?, id_func = ? WHERE id_reserva = ?");
+        $stmt->bind_param('iii', $multa, $id_func, $id_reserva);
+       
+        if($stmt->execute()) {
+            $_SESSION['mensagem'] = 'Multa adicionada com sucesso para a reserva ' . $id_reserva;
+            $_SESSION['tipo-mensagem'] = 'success';
+        } else {
+            $_SESSION['mensagem'] = 'Erro ao adicionar multa para a reserva ' . $id_reserva;
+            $_SESSION['tipo-mensagem'] = 'danger';
+        }
+    
+        $novaUrl = '../../pages/books/index.php?acao=listaReserva';
+    }
     
     //fechar conexão com banco de dados
     $mysqli_connection->close();
 
-    //redirect($novaUrl);
+    redirect($novaUrl);
 
     function redirect($url) {
         ob_start();

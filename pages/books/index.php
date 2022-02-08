@@ -14,7 +14,10 @@
   <title>Biblioteca</title>
 </head>
 <body>
-  <?php include_once "../common/menu.html"; ?>
+  <?php 
+    include("../funcionario/autentica.php");
+    include_once "../common/menu.html";
+  ?>
 
   <!-- Conteudo Principal -->
   <main class="flex-shrink-0">
