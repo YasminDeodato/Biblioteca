@@ -7,23 +7,20 @@
       <a class="navbar-brand" href="index.php"><span class="material-icons align-middle">bookmark</span>Biblioteca</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Nova Reserva</a>
+          <a class="nav-link" href="index.php?acao=formsReserva&sub=reserva">Nova Reserva</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Minhas Leituras</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Lista de Desejos</a>
+          <a class="nav-link" href="index.php?acao=listaReserva&sub=reserva">Minhas Reservas</a>
         </li>
       </ul>
-      <ul class="navbar-nav d-flex">
+      <ul class="navbar-nav d-flex px-5">
         <li class="nav-item dropdown d-flex">
-          <a class="nav-link dropdown-toggle" tabindex="-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" tabindex="-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
             Meu Perfil
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="index.php?acao=atualizarDados">Editar Dados</a></li>
-            <li><a class="dropdown-item" href="index.php?acao=atualizarSenha">Editar senha</a></li>
+            <li><a class="dropdown-item" href="index.php?acao=atualizarSenha">Atualizar senha</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../login/login.php?acao=sair">Sair</a></li>
           </ul>

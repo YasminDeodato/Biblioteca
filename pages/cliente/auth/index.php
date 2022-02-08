@@ -17,7 +17,7 @@
   <?php 
     include("../login/autentica.php");
     include_once "../../common/menu-cliente.html"; 
-    ?>
+  ?>
 
 <!-- Conteudo Principal -->
 <main class="flex-shrink-0">

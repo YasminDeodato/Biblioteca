@@ -19,7 +19,7 @@
         
         <main class="flex-shrink-0">
             <div class="col text-center pt-2">
-                <a href="#"><button type="submit" class="btn btn-primary mt-2">Área de Funcionários</button></a>
+                <a href="../../funcionario/login.php"><button type="submit" class="btn btn-primary mt-2">Área de Funcionários</button></a>
             </div>
             <div class="container pt-5">
                 <div class="row align-items-center justify-content-center">

@@ -8,12 +8,12 @@
         case 'Em andamento':
             $color = 'info';
             break;
-        case 'Em atraso':
-            $color = 'danger';
-            break;
         case 'Finalizada': 
             $color = 'success';
             break;
+        case 'Em atraso':
+        case 'Cancelada':
+            $color = 'danger';
     }
 
     $avalicao = 2;
@@ -36,7 +36,7 @@
                         <div class="col-auto">
                             <a data-bs-toggle="modal" data-bs-target="#devolucaoModal<?php echo $reserva['id_reserva']; ?>" data-toggle="modal" class="btn border-<?php echo $color; ?> 
                                 <?php 
-                                    if($reserva['status_r'] == 'Em analise' || $reserva['status_r'] == 'Finalizada') { echo 'disabled'; }
+                                    if($reserva['status_r'] == 'Em analise' || $reserva['status_r'] == 'Finalizada' || $reserva['status_r'] == 'Cancelada') { echo 'disabled'; }
                                 ?>
                             ">
                                 <span class="material-icons align-middle">add</span>Delvover
@@ -54,7 +54,7 @@
                     </div>
                     <div class="row justify-content-between">
                         <div class="col-md-6 col-auto">
-                            Multa: 0 pontos
+                            Multa: <?php echo $reserva['multa']; ?> pontos
                         </div>
                         <div class="col-md-6 col-auto">
                             Avaliação: 
