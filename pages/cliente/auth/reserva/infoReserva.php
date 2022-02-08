@@ -15,8 +15,6 @@
         case 'Cancelada':
             $color = 'danger';
     }
-
-    $avalicao = 2;
 ?>
 <div class="row my-4">
     <div class="col-md-10 col-auto">
@@ -56,14 +54,13 @@
                         <div class="col-md-6 col-auto">
                             Multa: <?php echo $reserva['multa']; ?> pontos
                         </div>
-                        <div class="col-md-6 col-auto">
-                            Avaliação: 
+                        <div class="col-md-6 col-auto"> 
                             <?php 
-                                for($i=0; $i<$avalicao; $i++)
-                                    echo '<span class="material-icons text-' . $color .' align-middle">star</span>';
-
-                                for($i=0; $i<5-$avalicao; $i++)
-                                    echo '<span class="material-icons text-secondary align-middle">star</span>';
+                                if($reserva['data_fim'] == date('Y-m-d'))
+                                    echo '<p class="text-warning">A reserva termina hoje!</p>';
+                                    
+                                if($reserva['data_fim'] < date('Y-m-d') && $reserva['status_r'] == 'Em andamento')
+                                    echo '<p class="text-danger">A entrega esta atrasada! Devolva logo.</p>';
                             ?>
                         </div>
                     </div>

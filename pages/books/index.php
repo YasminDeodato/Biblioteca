@@ -28,10 +28,11 @@
           include($url);
         } else {
       ?>
-        <h1 class="mt-5">Biblioteca</h1>
-        <p class="lead">Aqui voce encontra os livros mais falados do momento!</p>
-        <p>Cadastra-se e usufrua dos beneficios!</p>
-
+        <div class="row">
+          <h1>Sistema de Controle</h1>
+          <p class="lead">Funcionario(a): <?php echo $_SESSION['nome'];?></p>
+          <p>Acesse as op&ccedil;&otilde;es no menu para usufruir das fun&ccedil;&otilde;es!</p>
+        </div>
       <?php
         }
       ?>

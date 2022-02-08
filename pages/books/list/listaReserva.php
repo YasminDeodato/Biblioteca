@@ -34,7 +34,7 @@
         foreach ($reservas as $r) {
             echo "<tr>";
             echo '<td>';
-                $cor = ($r['id_func'] == 1) ? 'warning' : 'secondary';
+                $cor = ($r['id_func'] == $_SESSION['id_func']) ? 'warning' : 'secondary';
                 echo '<span class="material-icons text-' . $cor .' align-middle">star</span>';
             echo '</td>';
             echo '<td>' . $r['id_reserva']. '</td>';
