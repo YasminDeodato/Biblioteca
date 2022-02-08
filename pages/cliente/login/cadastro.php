@@ -26,7 +26,7 @@
         <br/>
 
         <p class="small text-center">
-            Já possui uma conta? <a href="login.php" class="text-decoration-none">Faça o Login</a><br/>
+            J&aacute; possui uma conta? <a href="login.php" class="text-decoration-none">Fa&ccedil;a o Login</a><br/>
         </p>  
     </div>
 </div>

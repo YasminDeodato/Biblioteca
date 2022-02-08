@@ -18,7 +18,7 @@
         <br/>
         <p class="small text-center">
             <a href="login.php?acao=recupera" class="text-decoration-none">Esqueceu a senha?</a><br/>
-            Ainda não tem uma conta? <a href="login.php?acao=cadastro" class="text-decoration-none">Cadastre-se</a>
+            Ainda n&atilde;o tem uma conta? <a href="login.php?acao=cadastro" class="text-decoration-none">Cadastre-se</a>
         </p>
     </div>
 </div>
